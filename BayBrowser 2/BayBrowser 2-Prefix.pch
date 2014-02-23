@@ -1,0 +1,43 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#import "libtransmission/transmission.h"
+#import "libtransmission/utils.h"
+#import "libtransmission/bencode.h"
+
+
+#define NSOffState 0
+#define NSOnState 1
+#define NSMixedState 2
+
+//make life easier
+#define Delegate (EAiPhoneDelegate *)[[UIApplication sharedApplication] delegate]
+
+//settings
+#define SETTINGS_CAN_DOWNLOAD [[NSUserDefaults standardUserDefaults] boolForKey:@"canDownload"]
+
+#define SETTINGS_DOES_REFRESH [[NSUserDefaults standardUserDefaults] boolForKey:@"doesRefresh"]
+
+#define SETTINGS_PORN_ENABLED [[NSUserDefaults standardUserDefaults] boolForKey:@"showsPorn"]
+
+#define SETTINGS_CAN_SEED [[NSUserDefaults standardUserDefaults] boolForKey:@"canSeed"]
+
+#define SETTINGS_BASE_URL [[NSUserDefaults standardUserDefaults] valueForKey:@"baseUrl"]
+
+#define SETTINGS_HAS_RUN [[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun"]
+
+#define SETTINGS_PROGRESS_ENABLED [[NSUserDefaults standardUserDefaults] boolForKey:@"showsProgress"]
