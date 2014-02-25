@@ -41,3 +41,7 @@
 #define SETTINGS_HAS_RUN [[NSUserDefaults standardUserDefaults] boolForKey:@"hasRun"]
 
 #define SETTINGS_PROGRESS_ENABLED [[NSUserDefaults standardUserDefaults] boolForKey:@"showsProgress"]
+
+#define SETTINGS_USE_WIFI [[NSUserDefaults standardUserDefaults] boolForKey:@"useWifi"]
+
+#define SETTINGS_USE_NETWORK [[NSUserDefaults standardUserDefaults] boolForKey:@"useNetwork"]

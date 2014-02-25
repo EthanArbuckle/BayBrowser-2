@@ -107,6 +107,7 @@
 		5F80F5011835DD0D008AD76C /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F80F4F61835DD0D008AD76C /* AFURLRequestSerialization.m */; };
 		5F80F5021835DD0D008AD76C /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F80F4F81835DD0D008AD76C /* AFURLResponseSerialization.m */; };
 		5F80F5031835DD0D008AD76C /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F80F4FA1835DD0D008AD76C /* AFURLSessionManager.m */; };
+		5F9D391518BD136000ABDC8A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D391418BD136000ABDC8A /* Reachability.m */; };
 		5FA2E217189AB8BA00898FD6 /* EAAppSwitcherPreviewOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA2E216189AB8BA00898FD6 /* EAAppSwitcherPreviewOverlay.m */; };
 		5FA8070F1839A2A600F8E16E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA8070E1839A2A600F8E16E /* libz.dylib */; };
 		5FBF20601841E6CD001B0BAD /* EAPostSearchHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF205F1841E6CD001B0BAD /* EAPostSearchHeader.m */; };
@@ -323,6 +324,8 @@
 		5F8264B718611F6300906120 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "BayBrowser 2/Resources/Parse.framework"; sourceTree = "<group>"; };
 		5F8265541861255C00906120 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		5F82655918627D2800906120 /* Gremlin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gremlin.framework; path = "BayBrowser 2/Resources/Gremlin.framework"; sourceTree = "<group>"; };
+		5F9D391318BD136000ABDC8A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		5F9D391418BD136000ABDC8A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		5FA2E215189AB8BA00898FD6 /* EAAppSwitcherPreviewOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAAppSwitcherPreviewOverlay.h; sourceTree = "<group>"; };
 		5FA2E216189AB8BA00898FD6 /* EAAppSwitcherPreviewOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAAppSwitcherPreviewOverlay.m; sourceTree = "<group>"; };
 		5FA806F11839A16700F8E16E /* libevent_openssl.la */ = {isa = PBXFileReference; lastKnownFileType = text; name = libevent_openssl.la; path = libraries/out/i386/lib/libevent_openssl.la; sourceTree = "<group>"; };
@@ -728,6 +731,8 @@
 				5FA2E216189AB8BA00898FD6 /* EAAppSwitcherPreviewOverlay.m */,
 				5F806B3A18B5330700EAE4CD /* EADynamicBlur.h */,
 				5F806B3B18B5330700EAE4CD /* EADynamicBlur.m */,
+				5F9D391318BD136000ABDC8A /* Reachability.h */,
+				5F9D391418BD136000ABDC8A /* Reachability.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -1066,6 +1071,7 @@
 				5FF3A60118406149008A34A0 /* EAThemeManager.m in Sources */,
 				5F80F4FB1835DD0D008AD76C /* AFHTTPRequestOperation.m in Sources */,
 				5F4733D61894A4F000C51824 /* EAFBMissingSymbols.m in Sources */,
+				5F9D391518BD136000ABDC8A /* Reachability.m in Sources */,
 				5F12FFCE184ECA3D00A99FA1 /* GCDWebServer.m in Sources */,
 				5F7C45671847ED3B004EA2E7 /* EAImagesView.m in Sources */,
 				5FFC33921831E10200990D9C /* main.m in Sources */,

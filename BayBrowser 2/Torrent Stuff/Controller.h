@@ -30,6 +30,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TorrentFetcher.h"
+#import "Reachability.h"
 
 typedef enum
 {
@@ -81,6 +82,7 @@ extern BOOL isStartingTransferAllowed();
 @property (nonatomic, retain) NSTimer *logMessageTimer;
 @property (nonatomic, retain) DDFileLogger *fileLogger;
 @property (nonatomic, retain) NSMutableArray *fTorrents;
+@property (nonatomic, retain) Reachability *reachability;
 
 - (void)transmissionInitialize;
 - (NSArray*)findRelatedApps;

@@ -293,6 +293,14 @@ static tr_rpc_callback_status rpcCallback(tr_session * handle UNUSED, tr_rpc_cal
 
 - (BOOL)isStartingTransferAllowed
 {
+    NetworkStatus network = [_reachability currentReachabilityStatus];
+    
+    if (network == ReachableViaWiFi && !SETTINGS_USE_WIFI) return NO;
+    
+    if (network == ReachableViaWWAN && !SETTINGS_USE_NETWORK) return NO;
+    
+    if (network == NotReachable) return NO;
+    
 	return YES;
 }
 
