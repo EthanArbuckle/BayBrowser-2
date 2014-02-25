@@ -10,11 +10,11 @@
 #import "EAThemeManager.h"
 
 typedef enum {
-    EAPostSearchHeaderSortBySeeders,
-    EAPostSearchHeaderSortByLeechers,
-    EAPostSearchHeaderSortByUploaded,
-    EAPostSearchHeaderSortBySize,
-    EAPostSearchHeaderSortByUploader
+	EAPostSearchHeaderSortBySeeders,
+	EAPostSearchHeaderSortByLeechers,
+	EAPostSearchHeaderSortByUploaded,
+	EAPostSearchHeaderSortBySize,
+	EAPostSearchHeaderSortByUploader
 } EAPostSearchHeaderSortByType;
 
 

@@ -20,28 +20,28 @@
 		[_percentLabel setText:@""];
 		[_percentLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:12]];
 		[_percentLabel setBackgroundColor:[UIColor clearColor]];
-        [_percentLabel setTextColor:[UIColor whiteColor]];
+		[_percentLabel setTextColor:[UIColor whiteColor]];
 		[self addSubview:_percentLabel];
-        [_percentLabel setAlpha:1];
+		[_percentLabel setAlpha:1];
 	}
-    
+
 	return self;
 }
 
 - (void)setProgress:(float)progress {
-    if (progress <= 1)
-        [_percentLabel setText:[NSString stringWithFormat:@"%.0f%%", progress*100]];
+	if (progress <= 1)
+		[_percentLabel setText:[NSString stringWithFormat:@"%.0f%%", progress * 100]];
 }
 
 - (void)hide {
-    [UIView animateWithDuration:1 animations: ^{
-        [_percentLabel setAlpha:0];
-    }];
+	[UIView animateWithDuration:1 animations: ^{
+	    [_percentLabel setAlpha:0];
+	}];
 }
 
 - (void)show {
-    if (SETTINGS_PROGRESS_ENABLED) //only show if enabled
-        [_percentLabel setAlpha:1];
+	if (SETTINGS_PROGRESS_ENABLED) //only show if enabled
+		[_percentLabel setAlpha:1];
 }
 
 @end

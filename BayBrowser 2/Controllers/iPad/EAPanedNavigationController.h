@@ -13,8 +13,8 @@
 #import "KGNoise.h"
 
 typedef enum {
-    EAPagingDirectionRight = 0,
-    EAPagingDirectionLeft,
+	EAPagingDirectionRight = 0,
+	EAPagingDirectionLeft,
 } EAPagingDirection;
 
 @class EAPagingScollView;
@@ -33,7 +33,7 @@ typedef enum {
 - (id)initWithRootViewController:(UIViewController *)rootViewController;
 - (void)layoutControllers;
 - (void)pushViewController:(UIViewController *)controller animated:(BOOL)animated;
-- (NSArray *)popToRootViewControllerAnimated:(BOOL)animated ;
+- (NSArray *)popToRootViewControllerAnimated:(BOOL)animated;
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated;
 - (void)removeControllerAtIndex:(int)index;
 - (void)scrollToController:(UIViewController *)controller;

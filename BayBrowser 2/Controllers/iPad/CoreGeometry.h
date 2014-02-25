@@ -29,7 +29,7 @@ CGSize CGRectGetBoundingSize(CGRect rect);
 CGPoint CGPointFromCGSize(CGSize size);
 CGSize CGSizeFromCGPoint(CGPoint point);
 
-static const CGSize CGSizeUnit = {1.0f,1.0f};
+static const CGSize CGSizeUnit = { 1.0f, 1.0f };
 
 CGRect CGRectAlignTop(CGRect rect, CGRect containingRect);
 CGRect CGRectAlignBottom(CGRect rect, CGRect containingRect);

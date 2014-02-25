@@ -12,23 +12,23 @@ NSString *FBTokenInformationExpirationDateKey = @"";
 NSString *FBTokenInformationTokenKey = @"";
 NSString *FBTokenInformationUserFBIDKey = @"";
 
-@interface FBAppCall:NSObject
+@interface FBAppCall : NSObject
 @end
 @implementation FBAppCall
 @end
-@interface FBRequest:NSObject
+@interface FBRequest : NSObject
 @end
 @implementation FBRequest
 @end
-@interface FBSession:NSObject
+@interface FBSession : NSObject
 @end
 @implementation FBSession
 @end
-@interface FBSessionTokenCaching:NSObject
+@interface FBSessionTokenCaching : NSObject
 @end
 @implementation FBSessionTokenCaching
 @end
-@interface FBSessionTokenCachingStrategy:NSObject
+@interface FBSessionTokenCachingStrategy : NSObject
 @end
 @implementation FBSessionTokenCachingStrategy
 @end

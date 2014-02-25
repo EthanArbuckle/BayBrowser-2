@@ -24,65 +24,65 @@
 
 @end
 
-extern NSString * const kCAFilterGaussianBlur;
-NSString * const EABlurViewQualityDefault = @"default";
-NSString * const EABlurViewQualityLow = @"low";
-static NSString * const EABlurViewQualityKey = @"inputQuality";
-static NSString * const EABlurViewRadiusKey = @"inputRadius";
-static NSString * const EABlurViewBoundsKey = @"inputBounds";
-static NSString * const EABlurViewHardEdgesKey = @"inputHardEdges";
+extern NSString *const kCAFilterGaussianBlur;
+NSString *const EABlurViewQualityDefault = @"default";
+NSString *const EABlurViewQualityLow = @"low";
+static NSString *const EABlurViewQualityKey = @"inputQuality";
+static NSString *const EABlurViewRadiusKey = @"inputRadius";
+static NSString *const EABlurViewBoundsKey = @"inputBounds";
+static NSString *const EABlurViewHardEdgesKey = @"inputHardEdges";
 
 
 @implementation EADynamicBlur
 
 + (Class)layerClass {
-    return [CABackdropLayer class];
+	return [CABackdropLayer class];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        CAFilter *filter = [CAFilter filterWithName:kCAFilterGaussianBlur];
-        self.layer.filters = @[ filter ];
-        self.blurFilter = filter;
-        
-        self.blurQuality = EABlurViewQualityDefault;
-        self.blurRadius = 5.0f;
-    }
-    return self;
+	self = [super initWithFrame:frame];
+	if (self) {
+		CAFilter *filter = [CAFilter filterWithName:kCAFilterGaussianBlur];
+		self.layer.filters = @[filter];
+		self.blurFilter = filter;
+
+		self.blurQuality = EABlurViewQualityDefault;
+		self.blurRadius = 5.0f;
+	}
+	return self;
 }
 
 - (void)setQuality:(NSString *)quality {
-    [self.blurFilter setValue:quality forKey:EABlurViewQualityKey];
+	[self.blurFilter setValue:quality forKey:EABlurViewQualityKey];
 }
 
 - (NSString *)quality {
-    return [self.blurFilter valueForKey:EABlurViewQualityKey];
+	return [self.blurFilter valueForKey:EABlurViewQualityKey];
 }
 
 - (void)setBlurRadius:(CGFloat)radius {
-    [self.blurFilter setValue:@(radius) forKey:EABlurViewRadiusKey];
+	[self.blurFilter setValue:@(radius) forKey:EABlurViewRadiusKey];
 }
 
 - (CGFloat)blurRadius {
-    return [[self.blurFilter valueForKey:EABlurViewRadiusKey] floatValue];
+	return [[self.blurFilter valueForKey:EABlurViewRadiusKey] floatValue];
 }
 
 - (void)setBlurCroppingRect:(CGRect)croppingRect {
-    [self.blurFilter setValue:[NSValue valueWithCGRect:croppingRect] forKey:EABlurViewBoundsKey];
+	[self.blurFilter setValue:[NSValue valueWithCGRect:croppingRect] forKey:EABlurViewBoundsKey];
 }
 
 - (CGRect)blurCroppingRect {
-    NSValue *value = [self.blurFilter valueForKey:EABlurViewBoundsKey];
-    return value ? [value CGRectValue] : CGRectNull;
+	NSValue *value = [self.blurFilter valueForKey:EABlurViewBoundsKey];
+	return value ? [value CGRectValue] : CGRectNull;
 }
 
 - (void)setBlurEdges:(BOOL)blurEdges {
-    [self.blurFilter setValue:@(!blurEdges) forKey:EABlurViewHardEdgesKey];
+	[self.blurFilter setValue:@(!blurEdges) forKey:EABlurViewHardEdgesKey];
 }
 
 - (BOOL)blurEdges {
-    return ![[self.blurFilter valueForKey:EABlurViewHardEdgesKey] boolValue];
+	return ![[self.blurFilter valueForKey:EABlurViewHardEdgesKey] boolValue];
 }
 
 @end

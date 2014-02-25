@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-extern NSString * const EABlurViewQualityDefault;
-extern NSString * const EABlurViewQualityLow;
+extern NSString *const EABlurViewQualityDefault;
+extern NSString *const EABlurViewQualityLow;
 
 NS_CLASS_AVAILABLE_IOS(7_0) @interface EADynamicBlur : UIView
 
