@@ -239,17 +239,8 @@
 
 			if (_isPad) {
 				//remove controllers in front of the current one (only in front of it)
-				for (UIViewController *controller in[[Delegate rootStackController] viewControllers]) {
-					//get index of current one
-					int index = [[[Delegate rootStackController] viewControllers] indexOfObject:self];
-
-					//if others are ahead of this one
-					if ([[[Delegate rootStackController] viewControllers] indexOfObject:controller] >= index + 1)
-
-						//remove them
-						[[Delegate rootStackController] removeControllerAtIndex:[[[Delegate rootStackController] viewControllers] indexOfObject:controller]];
-				}
-
+				[[Delegate rootStackController] removeAllControllersAfterController:self];
+                
 				//everythings off, now push this one
 				[[Delegate rootStackController] pushViewController:newBrowser animated:YES];
 

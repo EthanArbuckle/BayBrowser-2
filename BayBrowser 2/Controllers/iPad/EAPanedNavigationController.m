@@ -15,9 +15,9 @@
 	self = [super init];
 
 	if (self) {
+        
 		//create objects
 		_viewControllers = [[NSMutableArray alloc] init];
-		_pivotPoints = [[NSMutableArray alloc] init];
 		_rootViewController = rootViewController;
 
 		//set background color
@@ -65,8 +65,6 @@
 	//start x origin at 0
 	CGFloat offsetX = 0;
 
-	[_pivotPoints removeAllObjects];
-
 	//create array to cycle through
 	NSArray *viewControllers = [NSArray arrayWithArray:_viewControllers];
 
@@ -85,7 +83,6 @@
 		    [controller.view setFrame:frame];
 		}];
 
-		[_pivotPoints addObject:[NSNumber numberWithFloat:offsetX]];
 		offsetX += [controller.view frame].size.width;
 
 		//create black 1px seperating view between controllers
@@ -118,26 +115,6 @@
 	[_pagingView setContentOffset:CGPointMake(currentOffset.x, 0) animated:YES];
 }
 
-- (void)activateController:(UIViewController *)controller scrolling:(BOOL)scrolling {
-	[self activateController:controller scrolling:scrolling pagingDirection:EAPagingDirectionRight];
-}
-
-- (void)activateController:(UIViewController *)controller scrolling:(BOOL)scrolling pagingDirection:(EAPagingDirection)pagingDirection {
-	if (_activeController != controller) { //if it isnt active
-		UIViewController *previouslyActivatedController = _activeController;
-		if ([previouslyActivatedController respondsToSelector:@selector(foldingViewWillBecomeActive)])
-			[previouslyActivatedController performSelector:@selector(foldingViewWillBecomeActive)];
-	}
-
-	_activeController = controller;
-
-	if ([controller respondsToSelector:@selector(foldingViewWillBecomeActive)])
-		[controller performSelector:@selector(foldingViewWillBecomeActive)];
-
-	// if (scrolling)
-	// [self scrollToController:controller pagingDirection:pagingDirection animated:YES];
-}
-
 - (void)stopAnimation {
 	[[_pagingView layer] removeAllAnimations];
 }
@@ -163,10 +140,6 @@
 	[self layoutControllers];
 }
 
-- (void)activateTopController {
-	[self activateController:_topViewController scrolling:YES];
-}
-
 - (void)viewWillLayoutSubviews {
 	[super viewWillLayoutSubviews];
 	[self layoutControllers];
@@ -178,91 +151,6 @@
 
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
 	[super dismissViewControllerAnimated:flag completion:completion];
-}
-
-- (UIViewController *)popSingleViewController:(UIViewController *)poppingController animated:(BOOL)animated lastOperation:(BOOL)lastOperation {
-	NSUInteger numControllers = [_viewControllers count];
-
-	if (numControllers <= 1)
-		return nil;
-
-	if (!poppingController || ![_viewControllers containsObject:poppingController])
-		return nil;
-
-	NSUInteger indexOfController = [_viewControllers indexOfObject:poppingController];
-	BOOL wasTopController = (poppingController == _topViewController);
-
-	[poppingController removeFromParentViewController];
-
-	[poppingController viewWillDisappear:NO];
-	[[poppingController view] removeFromSuperview];
-	[poppingController viewDidDisappear:NO];
-
-	if (lastOperation && indexOfController > 0) {
-		UIViewController *secondLastController = [_viewControllers objectAtIndex:(indexOfController - 1)];
-
-		if (wasTopController) {
-			[self activateController:secondLastController scrolling:animated];
-		}
-		else {
-			[self layoutControllers];
-			[self activateController:secondLastController scrolling:animated pagingDirection:EAPagingDirectionLeft];
-		}
-	}
-
-	return poppingController;
-}
-
-- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
-	UIViewController *lastController = [_viewControllers lastObject];
-	return [self popSingleViewController:lastController animated:animated lastOperation:YES];
-}
-
-- (NSArray *)popToRootViewControllerAnimated:(BOOL)animated {
-	return [self popToViewController:self.rootViewController animated:animated];
-}
-
-- (NSArray *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated {
-	NSArray *popped = nil;
-	NSUInteger indexOfController = [_viewControllers indexOfObject:viewController];
-	if (indexOfController == NSNotFound)
-		return [NSArray array];
-
-	NSUInteger remaining = [_viewControllers count] - (indexOfController + 1);
-	popped = [_viewControllers subarrayWithRange:NSMakeRange(indexOfController + 1, remaining)];
-
-	for (UIViewController *controller in popped)
-		[self popSingleViewController:controller animated:animated lastOperation:(controller == popped.lastObject)];
-
-	return popped;
-}
-
-- (void)pushViewController:(UIViewController *)viewController afterPoppingToController:(UIViewController *)poppedToController {
-	if (poppedToController == nil || [_viewControllers indexOfObject:poppedToController] == NSNotFound) {
-		[self pushViewController:viewController animated:YES];
-		return;
-	}
-
-	NSUInteger indexOfController = [_viewControllers indexOfObject:poppedToController];
-	NSUInteger remaining = [_viewControllers count] - (indexOfController + 1);
-	NSArray *popped = [_viewControllers subarrayWithRange:NSMakeRange(indexOfController + 1, remaining)];
-	for (UIViewController *controller in popped)
-		[self popSingleViewController:controller animated:YES lastOperation:NO];
-
-	BOOL animatePush = YES;
-	/*
-	   if (
-	    _pagingView.contentSize.width > _pagingView.width &&
-	    poppedToController.containerView.right > (self.pagingView.contentSize.width - 5.))
-	   {
-	    animatePush = NO;
-	   }*/
-
-	[self pushViewController:viewController animated:animatePush];
-}
-
-- (NSArray *)popToActiveViewControllerAnimated:(BOOL)animated {
-	return [self popToViewController:self.activeController animated:animated];
 }
 
 - (UIViewController *)visibleViewController {
@@ -303,9 +191,20 @@
 	}];
 }
 
-- (void)scrollToController:(UIViewController *)controller {
-	if (![_viewControllers containsObject:controller])
-		return;
+- (void)removeAllControllersAfterController:(UIViewController *)controller {
+    
+    for (UIViewController *lcontroller in _viewControllers) {
+        
+        //get index of current one. this needs to be called in every loop b/c its index will change when items are removed
+        int index = [_viewControllers indexOfObject:controller];
+        
+        //if others are ahead of this one
+        if ([_viewControllers indexOfObject:lcontroller] >= index + 1)
+            
+            //remove them
+            [self removeControllerAtIndex:[_viewControllers indexOfObject:lcontroller]];
+    }
+
 }
 
 @end

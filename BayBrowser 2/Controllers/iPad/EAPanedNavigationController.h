@@ -22,7 +22,6 @@ typedef enum {
 @interface EAPanedNavigationController : UIViewController <UIScrollViewDelegate>
 
 @property (strong) NSMutableArray *viewControllers;
-@property (strong) NSMutableArray *pivotPoints;
 @property (strong, readonly) UIViewController *activeController;
 @property (strong) UIViewController *rootViewController;
 @property (strong) UIViewController *topViewController;
@@ -33,8 +32,9 @@ typedef enum {
 - (id)initWithRootViewController:(UIViewController *)rootViewController;
 - (void)layoutControllers;
 - (void)pushViewController:(UIViewController *)controller animated:(BOOL)animated;
-- (NSArray *)popToRootViewControllerAnimated:(BOOL)animated;
-- (UIViewController *)popViewControllerAnimated:(BOOL)animated;
+- (UIViewController *)visibleViewController;
+- (UIViewController *)secondLastController;
+- (UIViewController *)controllerBeforeController:(UIViewController *)controller;
 - (void)removeControllerAtIndex:(int)index;
-- (void)scrollToController:(UIViewController *)controller;
+- (void)removeAllControllersAfterController:(UIViewController *)controller;
 @end

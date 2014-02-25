@@ -146,8 +146,8 @@
 		[[_parent navigationController] pushViewController:detailView animated:YES]; //iphone
 	else {
 		[detailView setIsPad:YES];
-		if ([[[Delegate rootStackController] viewControllers] count] >= 3)
-			[[Delegate rootStackController] removeControllerAtIndex:2];
+		
+        [[Delegate rootStackController] removeAllControllersAfterController:_parent];
 
 		[[Delegate rootStackController] pushViewController:detailView animated:YES];
 
