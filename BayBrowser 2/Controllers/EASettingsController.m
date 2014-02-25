@@ -156,10 +156,10 @@
 			[[cell textLabel] setText:@"Enable Seeding"];
 		if ([indexPath row] == 3)
 			[[cell textLabel] setText:@"Enable Status Bar Progress"];
-        if ([indexPath row] == 4)
-            [[cell textLabel] setText:@"Enable on Wifi"];
-        if ([indexPath row] == 5)
-            [[cell textLabel] setText:@"Enable on Cellular"];
+		if ([indexPath row] == 4)
+			[[cell textLabel] setText:@"Enable on Wifi"];
+		if ([indexPath row] == 5)
+			[[cell textLabel] setText:@"Enable on Cellular"];
 
 		[self setupSwitchCell:cell atIndex:[indexPath row]]; //adds switch to each cell
 	}
@@ -260,14 +260,14 @@
 		case 3:
 			[cellSwitch setOn:SETTINGS_PROGRESS_ENABLED];
 			break;
-            
-        case 4:
-            [cellSwitch setOn:SETTINGS_USE_WIFI];
-            break;
-            
-        case 5:
-            [cellSwitch setOn:SETTINGS_USE_NETWORK];
-            break;
+
+		case 4:
+			[cellSwitch setOn:SETTINGS_USE_WIFI];
+			break;
+
+		case 5:
+			[cellSwitch setOn:SETTINGS_USE_NETWORK];
+			break;
 
 		default:
 			break;
@@ -308,19 +308,19 @@
 
 		case 2:
 			[[NSUserDefaults standardUserDefaults] setBool:[cellSwitch isOn] forKey:@"canSeed"];
-            break;
+			break;
 
 		case 3:
 			[[NSUserDefaults standardUserDefaults] setBool:[cellSwitch isOn] forKey:@"showsProgress"];
-            break;
-            
-        case 4:
-            [[NSUserDefaults standardUserDefaults] setBool:[cellSwitch isOn] forKey:@"useWifi"];
-            break;
-        
-        case 5:
-            [[NSUserDefaults standardUserDefaults] setBool:[cellSwitch isOn] forKey:@"useNetwork"];
-            break;
+			break;
+
+		case 4:
+			[[NSUserDefaults standardUserDefaults] setBool:[cellSwitch isOn] forKey:@"useWifi"];
+			break;
+
+		case 5:
+			[[NSUserDefaults standardUserDefaults] setBool:[cellSwitch isOn] forKey:@"useNetwork"];
+			break;
 
 		default:
 			break;

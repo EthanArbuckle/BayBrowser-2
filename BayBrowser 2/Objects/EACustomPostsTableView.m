@@ -146,8 +146,8 @@
 		[[_parent navigationController] pushViewController:detailView animated:YES]; //iphone
 	else {
 		[detailView setIsPad:YES];
-		
-        [[Delegate rootStackController] removeAllControllersAfterController:_parent];
+
+		[[Delegate rootStackController] removeAllControllersAfterController:_parent];
 
 		[[Delegate rootStackController] pushViewController:detailView animated:YES];
 

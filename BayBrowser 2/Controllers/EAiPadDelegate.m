@@ -30,8 +30,8 @@
 		[[NSUserDefaults standardUserDefaults] setValue:@"http://thepiratebay.tn" forKey:@"baseUrl"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showsProgress"];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useWifi"];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useNetwork"];
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useWifi"];
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useNetwork"];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 

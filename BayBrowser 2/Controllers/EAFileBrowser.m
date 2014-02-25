@@ -240,7 +240,7 @@
 			if (_isPad) {
 				//remove controllers in front of the current one (only in front of it)
 				[[Delegate rootStackController] removeAllControllersAfterController:self];
-                
+
 				//everythings off, now push this one
 				[[Delegate rootStackController] pushViewController:newBrowser animated:YES];
 

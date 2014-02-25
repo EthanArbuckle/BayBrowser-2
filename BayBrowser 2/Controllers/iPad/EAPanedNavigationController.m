@@ -15,7 +15,6 @@
 	self = [super init];
 
 	if (self) {
-        
 		//create objects
 		_viewControllers = [[NSMutableArray alloc] init];
 		_rootViewController = rootViewController;
@@ -192,19 +191,16 @@
 }
 
 - (void)removeAllControllersAfterController:(UIViewController *)controller {
-    
-    for (UIViewController *lcontroller in _viewControllers) {
-        
-        //get index of current one. this needs to be called in every loop b/c its index will change when items are removed
-        int index = [_viewControllers indexOfObject:controller];
-        
-        //if others are ahead of this one
-        if ([_viewControllers indexOfObject:lcontroller] >= index + 1)
-            
-            //remove them
-            [self removeControllerAtIndex:[_viewControllers indexOfObject:lcontroller]];
-    }
+	for (UIViewController *lcontroller in _viewControllers) {
+		//get index of current one. this needs to be called in every loop b/c its index will change when items are removed
+		int index = [_viewControllers indexOfObject:controller];
 
+		//if others are ahead of this one
+		if ([_viewControllers indexOfObject:lcontroller] >= index + 1)
+
+			//remove them
+			[self removeControllerAtIndex:[_viewControllers indexOfObject:lcontroller]];
+	}
 }
 
 @end
