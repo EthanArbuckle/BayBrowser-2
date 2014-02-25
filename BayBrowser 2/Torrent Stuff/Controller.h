@@ -31,6 +31,7 @@
 #import <UIKit/UIKit.h>
 #import "TorrentFetcher.h"
 #import "Reachability.h"
+#import "TSMessage.h"
 
 typedef enum
 {
