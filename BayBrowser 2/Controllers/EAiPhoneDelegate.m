@@ -29,7 +29,7 @@
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showsPorn"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"canSeed"];
 		[[NSUserDefaults standardUserDefaults] setValue:@"http://thepiratebay.tn" forKey:@"baseUrl"];
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun"];
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun 2.0.7"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showsProgress"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useWifi"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useNetwork"];

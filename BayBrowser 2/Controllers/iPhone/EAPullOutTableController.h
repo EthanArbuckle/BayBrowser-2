@@ -26,5 +26,7 @@
 - (void)tappedShowHide;
 - (void)showTable;
 - (void)hideTable;
+- (void)addPornToTable;
+- (void)removePornFromTable;
 
 @end

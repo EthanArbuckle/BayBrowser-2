@@ -306,8 +306,8 @@
 					[[(EASideMenuController *)[[[Delegate rootStackController] viewControllers] objectAtIndex:0] schemeList] insertObject:@"/browse/500" atIndex:31];
 					[[(EASideMenuController *)[[[Delegate rootStackController] viewControllers] objectAtIndex:0] sideMenuTable] reloadData];
 				}
-				//else
-				// [[Delegate slideoutController] addPornToTable:[[EADynamicPostsController alloc] initWithScheme:@"/browse/500"]];
+				else
+					[[Delegate pullOutMenu] addPornToTable];
 			}
 			else {
 				if (_isPad) {
@@ -315,8 +315,8 @@
 					[[(EASideMenuController *)[[[Delegate rootStackController] viewControllers] objectAtIndex:0] schemeList] removeObjectAtIndex:31];
 					[[(EASideMenuController *)[[[Delegate rootStackController] viewControllers] objectAtIndex:0] sideMenuTable] reloadData];
 				}
-				// else
-				//  [[Delegate slideoutController] removePornFromTable];
+				 else
+					 [[Delegate pullOutMenu] removePornFromTable];
 			}
 			break;
 		}
@@ -354,7 +354,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([indexPath section] == 5) {
-		UIAlertView *changelog = [[UIAlertView alloc] initWithTitle:@"BayBrowser 2.0.7 Changelog" message:@"No More Pro!\n\nLimit Downloads to Wifi or Cellular Only.\n\nAdded a Network Speed Overlay." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+		UIAlertView *changelog = [[UIAlertView alloc] initWithTitle:@"BayBrowser 2.0.7 Changelog" message:@"No More Pro! BayBrowser is Now Free and Open Source.\n\nLimit Downloads to Wifi or Cellular Only.\n\nAdded a Network Speed Overlay.\n\nFixed FileBrowser Toolbar Getting Put on Top of Side Menu.\n\nFixed Porn Category Not Being Added in iPhone Version." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
 		[changelog show];
 	}
 	

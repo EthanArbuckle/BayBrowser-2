@@ -53,8 +53,14 @@
 		[[_viewControllers objectAtIndex:0] setTitle:@"All"];
 
 		//cycle through and create a controller for each object
-		NSArray *titles = [[NSArray alloc] initWithObjects:@"Audio", @"Video", @"Applications", @"Games", @"Other", nil];
-		NSArray *schemes = [[NSArray alloc] initWithObjects:@"/browse/100", @"/browse/200", @"/browse/300", @"/browse/400", @"/browse/600", nil];
+		NSMutableArray *titles = [[NSMutableArray alloc] initWithObjects:@"Audio", @"Video", @"Applications", @"Games", @"Other", nil];
+		NSMutableArray *schemes = [[NSMutableArray alloc] initWithObjects:@"/browse/100", @"/browse/200", @"/browse/300", @"/browse/400", @"/browse/600", nil];
+		
+		if (SETTINGS_PORN_ENABLED) {
+			titles = [[NSMutableArray alloc] initWithObjects:@"Audio", @"Video", @"Applications", @"Games", @"Porn", @"Other", nil];
+			schemes = titles = [[NSMutableArray alloc] initWithObjects:@"Audio", @"Video", @"Applications", @"Games", @"Porn", @"Other", nil];
+		}
+		
 		for (NSString *controller in titles) {
 			EADynamicPostsController *dynamicController = [[EADynamicPostsController alloc] initWithScheme:[schemes objectAtIndex:[titles indexOfObject:controller]]];
 			[dynamicController setTitle:controller];
@@ -62,7 +68,9 @@
 		}
 
 		[_viewControllers addObject:[[EATorrentDownloadManager alloc] init]];
-		[[_viewControllers objectAtIndex:6] setTitle:@"Active"];
+		int indexForDLMGR = 6;
+		if (SETTINGS_PORN_ENABLED) indexForDLMGR++;
+		[[_viewControllers objectAtIndex:indexForDLMGR] setTitle:@"Active"];
 
 		//start file browser in downloads path
 		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -71,7 +79,9 @@
 		[_viewControllers addObject:[[EAFileBrowser alloc] initWithPath:downloadsFolder]];
 
 		[_viewControllers addObject:[[EASettingsController alloc] init]];
-		[[_viewControllers objectAtIndex:8] setTitle:@"Settings"];
+		int indexForSettings = 8;
+		if (SETTINGS_PORN_ENABLED) indexForSettings++;
+		[[_viewControllers objectAtIndex:indexForSettings] setTitle:@"Settings"];
 
 		//start on the first controller
 		[_navigationController setViewControllers:[NSArray arrayWithObject:[_viewControllers objectAtIndex:0]]];
@@ -100,8 +110,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if (section == 0)
+	if (section == 0) {
+		if (SETTINGS_PORN_ENABLED)
+			return 7;
 		return 6;
+	}
+	
 	if (section == 1)
 		return 2;
 	return 1;
@@ -114,7 +128,9 @@
 
 	if ([indexPath section] == 0) {
 		//pick from titles in array
-		NSArray *titles = [[NSArray alloc] initWithObjects:@"All", @"Audio", @"Video", @"Applications", @"Games", @"Other", nil];
+		NSMutableArray *titles = [[NSMutableArray alloc] initWithObjects:@"All", @"Audio", @"Video", @"Applications", @"Games", @"Other", nil];
+		if (SETTINGS_PORN_ENABLED)
+			[titles insertObject:@"Porn" atIndex:5];
 		[[cell textLabel] setText:[titles objectAtIndex:[indexPath row]]];
 		[[cell textLabel] setTextColor:[UIColor whiteColor]];
 		[[cell textLabel] setBackgroundColor:[UIColor clearColor]];
@@ -143,12 +159,19 @@
 	}
 
 	if ([indexPath section] == 1) {
-		//row + 6 is viewcontroller
-		[_navigationController setViewControllers:[NSArray arrayWithObject:[_viewControllers objectAtIndex:[indexPath row] + 6]]];
+		//row + 6 is viewcontroller (without porn)
+		int indexToAdd = 6;
+		if (SETTINGS_PORN_ENABLED)
+			indexToAdd++;
+		[_navigationController setViewControllers:[NSArray arrayWithObject:[_viewControllers objectAtIndex:[indexPath row] + indexToAdd]]];
 	}
 
-	if ([indexPath section] == 2)
-		[_navigationController setViewControllers:[NSArray arrayWithObject:[_viewControllers objectAtIndex:[indexPath row] + 8]]];
+	if ([indexPath section] == 2) {
+		int indexToAdd = 8;
+		if (SETTINGS_PORN_ENABLED)
+			indexToAdd++;
+		[_navigationController setViewControllers:[NSArray arrayWithObject:[_viewControllers objectAtIndex:[indexPath row] + indexToAdd]]];
+	}
 
 	//Aadd slide out menu + double tap
 	UIBarButtonItem *navBar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconSlide.png"] style:UIBarButtonItemStyleDone target:self action:@selector(tappedShowHide)];
@@ -236,6 +259,24 @@
 		else
 			[self showTable];
 	}
+}
+
+- (void)addPornToTable {
+	//add porn controller to controller list
+	EADynamicPostsController *pornController = [[EADynamicPostsController alloc] initWithScheme:@"/browse/500"];
+	[pornController setTitle:@"Porn"];
+	[_viewControllers insertObject:pornController atIndex:5];
+	
+	//refresh
+	[_sideTable reloadData];
+}
+
+- (void)removePornFromTable {
+	//remove porn controller
+	[_viewControllers removeObjectAtIndex:5];
+	
+	//refresh
+	[_sideTable reloadData];
 }
 
 @end
