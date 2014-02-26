@@ -14,6 +14,9 @@
 	self = [super init];
 
 	if (self) {
+		
+		_isPad = isPad;
+		
 		//set frame, depending on device
 		if (isPad) {
 			
@@ -116,8 +119,18 @@
 		CGPoint translation = [pan translationInView:self];
 		center = CGPointMake(center.x + translation.x, center.y + translation.y);
 		
-		if (center.y > 30 && center.y < 465 && center.x > 65 && center.x < 260)
-			[self setCenter:center];
+		//iphones bounds
+		if (!_isPad) {
+			if (center.y > 30 && center.y < 465 && center.x > 65 && center.x < 260)
+				[self setCenter:center];
+		}
+		
+		//ipads
+		else {
+			if (center.y > 20 && center.y < 1002 && center.x > 65 && center.x < 680)
+				[self setCenter:center];
+			
+		}
 		
 		[pan setTranslation:CGPointZero inView:self];
 	}

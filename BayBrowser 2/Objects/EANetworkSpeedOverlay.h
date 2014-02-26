@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) UILabel *upLabel;
 @property (nonatomic, strong) UILabel *downLabel;
+@property (nonatomic) BOOL isPad;
 
 - (id)initAsPad:(BOOL)isPad;
 - (void)removeNetworkOverlay;
