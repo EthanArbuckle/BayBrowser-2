@@ -99,6 +99,11 @@
 }
 
 - (void)tappedEditButton {
+	
+	//close sidetable
+	if (!_isPad)
+		[[Delegate pullOutMenu] hideTable];
+	
 	if ([_filesTable isEditing]) {
 		[_filesTable setEditing:NO animated:YES];
 
