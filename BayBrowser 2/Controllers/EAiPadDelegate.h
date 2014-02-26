@@ -12,6 +12,7 @@
 #import "EAProgressBar.h"
 #import "EASideMenuController.h"
 #import "EAAppSwitcherPreviewOverlay.h"
+#import "EANetworkSpeedOverlay.h"
 
 @interface EAiPadDelegate : UIResponder <UIApplicationDelegate, NSObject>
 

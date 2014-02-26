@@ -33,6 +33,7 @@
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showsProgress"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useWifi"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useNetwork"];
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showOverlay"];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 
@@ -80,6 +81,14 @@
 	[[NSFileManager defaultManager] linkItemAtPath:downloadsFolder toPath:@"/var/mobile/Downloads/BayBrowser Downloads" error:nil];
 
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+	
+	//create network speed view
+	EANetworkSpeedOverlay *networkSpeed = [[EANetworkSpeedOverlay alloc] initAsPad:NO];
+	if (SETTINGS_SHOW_OVERLAY)
+		[networkSpeed addNetworkOverlay];
+	else
+		[networkSpeed removeNetworkOverlay];
+	[[self window] addSubview:networkSpeed];
 
 	return YES;
 }

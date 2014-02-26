@@ -121,7 +121,7 @@
 	if (section == 0)
 		return 1;
 	if (section == 1)
-		return 6;
+		return 7;
 	if (section == 2)
 		return 4;
 	if (section == 3)
@@ -160,6 +160,8 @@
 			[[cell textLabel] setText:@"Enable on Wifi"];
 		if ([indexPath row] == 5)
 			[[cell textLabel] setText:@"Enable on Cellular"];
+		if ([indexPath row] == 6)
+			[[cell textLabel] setText:@"Enable Speed Overlay"];
 
 		[self setupSwitchCell:cell atIndex:[indexPath row]]; //adds switch to each cell
 	}
@@ -268,6 +270,10 @@
 		case 5:
 			[cellSwitch setOn:SETTINGS_USE_NETWORK];
 			break;
+			
+		case 6:
+			[cellSwitch setOn:SETTINGS_SHOW_OVERLAY];
+			break;
 
 		default:
 			break;
@@ -322,6 +328,14 @@
 			[[NSUserDefaults standardUserDefaults] setBool:[cellSwitch isOn] forKey:@"useNetwork"];
 			break;
 
+		case 6: {
+			[[NSUserDefaults standardUserDefaults] setBool:[cellSwitch isOn] forKey:@"showOverlay"];
+			if ([cellSwitch isOn])
+				[[NSNotificationCenter defaultCenter] postNotificationName:@"AddNetworkOverlay" object:nil];
+			else
+				[[NSNotificationCenter defaultCenter] postNotificationName:@"RemoveNetworkOverlay" object:nil];
+		}
+			
 		default:
 			break;
 	}
@@ -331,7 +345,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([indexPath section] == 5) {
-		UIAlertView *changelog = [[UIAlertView alloc] initWithTitle:@"BayBrowser 2.0.7 Changelog" message:@"No More Pro\n\n" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+		UIAlertView *changelog = [[UIAlertView alloc] initWithTitle:@"BayBrowser 2.0.7 Changelog" message:@"No More Pro!\n\nLimit Downloads to Wifi or Cellular Only.\n\nAdded a Network Speed Overlay." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
 		[changelog show];
 	}
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];

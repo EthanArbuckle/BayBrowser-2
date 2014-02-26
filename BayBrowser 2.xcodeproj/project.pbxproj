@@ -108,6 +108,7 @@
 		5F80F5021835DD0D008AD76C /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F80F4F81835DD0D008AD76C /* AFURLResponseSerialization.m */; };
 		5F80F5031835DD0D008AD76C /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F80F4FA1835DD0D008AD76C /* AFURLSessionManager.m */; };
 		5F9D391518BD136000ABDC8A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D391418BD136000ABDC8A /* Reachability.m */; };
+		5F9D391818BD52EB00ABDC8A /* EANetworkSpeedOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9D391718BD52EB00ABDC8A /* EANetworkSpeedOverlay.m */; };
 		5FA2E217189AB8BA00898FD6 /* EAAppSwitcherPreviewOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA2E216189AB8BA00898FD6 /* EAAppSwitcherPreviewOverlay.m */; };
 		5FA8070F1839A2A600F8E16E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA8070E1839A2A600F8E16E /* libz.dylib */; };
 		5FBF20601841E6CD001B0BAD /* EAPostSearchHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FBF205F1841E6CD001B0BAD /* EAPostSearchHeader.m */; };
@@ -326,6 +327,8 @@
 		5F82655918627D2800906120 /* Gremlin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gremlin.framework; path = "BayBrowser 2/Resources/Gremlin.framework"; sourceTree = "<group>"; };
 		5F9D391318BD136000ABDC8A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5F9D391418BD136000ABDC8A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5F9D391618BD52EB00ABDC8A /* EANetworkSpeedOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EANetworkSpeedOverlay.h; sourceTree = "<group>"; };
+		5F9D391718BD52EB00ABDC8A /* EANetworkSpeedOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EANetworkSpeedOverlay.m; sourceTree = "<group>"; };
 		5FA2E215189AB8BA00898FD6 /* EAAppSwitcherPreviewOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAAppSwitcherPreviewOverlay.h; sourceTree = "<group>"; };
 		5FA2E216189AB8BA00898FD6 /* EAAppSwitcherPreviewOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAAppSwitcherPreviewOverlay.m; sourceTree = "<group>"; };
 		5FA806F11839A16700F8E16E /* libevent_openssl.la */ = {isa = PBXFileReference; lastKnownFileType = text; name = libevent_openssl.la; path = libraries/out/i386/lib/libevent_openssl.la; sourceTree = "<group>"; };
@@ -733,6 +736,8 @@
 				5F806B3B18B5330700EAE4CD /* EADynamicBlur.m */,
 				5F9D391318BD136000ABDC8A /* Reachability.h */,
 				5F9D391418BD136000ABDC8A /* Reachability.m */,
+				5F9D391618BD52EB00ABDC8A /* EANetworkSpeedOverlay.h */,
+				5F9D391718BD52EB00ABDC8A /* EANetworkSpeedOverlay.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -1022,6 +1027,7 @@
 				5F7C45621847ED3B004EA2E7 /* EAiPhoneDelegate.m in Sources */,
 				5F7C45631847ED3B004EA2E7 /* EACommentsView.m in Sources */,
 				5F7C458D1847ED86004EA2E7 /* RegexKitLite.m in Sources */,
+				5F9D391818BD52EB00ABDC8A /* EANetworkSpeedOverlay.m in Sources */,
 				5F17D43B1831ED97008A13ED /* TFHppleElement.m in Sources */,
 				5F17D4211831EA60008A13ED /* JMCenterView.m in Sources */,
 				5F55844E1849C4F80029A062 /* EAFileBrowser.m in Sources */,
@@ -1197,7 +1203,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
-				CODE_SIGN_IDENTITY = "Ethan Arbuckle";
+				CODE_SIGN_IDENTITY = Computer;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/ethanarbuckle/Desktop/baybrowser-2/BayBrowser\\ 2/Resources",
@@ -1252,7 +1258,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
-				CODE_SIGN_IDENTITY = "Ethan Arbuckle";
+				CODE_SIGN_IDENTITY = Computer;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/ethanarbuckle/Desktop/baybrowser-2/BayBrowser\\ 2/Resources",

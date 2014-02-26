@@ -32,6 +32,7 @@
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showsProgress"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useWifi"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useNetwork"];
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showOverlay"];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 
@@ -87,6 +88,14 @@
 	} completion: ^(BOOL finished) {
 	    [splashView removeFromSuperview];
 	}];
+	
+	//create network speed view
+	EANetworkSpeedOverlay *networkSpeed = [[EANetworkSpeedOverlay alloc] initAsPad:YES];
+	if (SETTINGS_SHOW_OVERLAY)
+		[networkSpeed addNetworkOverlay];
+	else
+		[networkSpeed removeNetworkOverlay];
+	[[self window] addSubview:networkSpeed];
 
 	return YES;
 }

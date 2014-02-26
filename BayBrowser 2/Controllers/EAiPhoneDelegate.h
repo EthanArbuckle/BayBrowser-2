@@ -13,6 +13,7 @@
 #import "EAAppSwitcherPreviewOverlay.h"
 #import "EAPanedNavigationController.h"
 #import "EAPullOutTableController.h"
+#import "EANetworkSpeedOverlay.h"
 
 @class EAPullOutTableController;
 
