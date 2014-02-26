@@ -10,7 +10,6 @@
 #import "EADynamicPostsController.h"
 #import "EAiPhoneDelegate.h"
 #import "EADynamicPostsController.h"
-#import "TSMessage.h"
 #import "EASettingsController.h"
 
 @interface EASettingsController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIActionSheetDelegate>

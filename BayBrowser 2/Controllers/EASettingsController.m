@@ -420,13 +420,6 @@
 	[[Delegate torrentController] setGlobalDownloadSpeedLimit:(int)([sender value] * 5000)];
 }
 
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	if (event.type == UIEventSubtypeMotionShake) {
-		[[UIPasteboard generalPasteboard] setString:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
-		[TSMessage showNotificationWithTitle:@"Copied Device Identifer!" type:TSMessageNotificationTypeSuccess];
-	}
-}
-
 - (BOOL)canBecomeFirstResponder {
 	return YES;
 }
