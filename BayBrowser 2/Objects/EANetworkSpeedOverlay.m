@@ -97,11 +97,28 @@
 
 - (void)handlePan:(UIPanGestureRecognizer *)pan {
 	
+	//touches began, lower its alpha and make it smaller
+	if ([pan state] == UIGestureRecognizerStateBegan) {
+		[self setTransform:CGAffineTransformMakeScale(.95, .95)];
+		[self setAlpha:.9];
+	}
+	
+	//touches ended, restore its size and alpha
+	if ([pan state] == UIGestureRecognizerStateEnded) {
+		[self setTransform:CGAffineTransformMakeScale(1, 1)];
+		[self setAlpha:1];
+	}
+	
+	//finger moved, move view with it
 	if ([pan state] == UIGestureRecognizerStateChanged) {
+		
 		CGPoint center = [self center];
 		CGPoint translation = [pan translationInView:self];
 		center = CGPointMake(center.x + translation.x, center.y + translation.y);
-		[self setCenter:center];
+		
+		if (center.y > 30 && center.y < 465 && center.x > 65 && center.x < 260)
+			[self setCenter:center];
+		
 		[pan setTranslation:CGPointZero inView:self];
 	}
 }
