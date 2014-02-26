@@ -22,11 +22,11 @@
 		_torrentsTable = [[UITableView alloc] initWithFrame:[[self view] bounds]];
 		CGRect frame = [_torrentsTable frame];
 		frame.size.height -= 64;
-
+        
 		//only reduce height for iphones
 		if (!isPad)
 			[_torrentsTable setFrame:frame];
-
+        
 		if (isPad) {
 			//set custom frame
 			CGRect ipadFrame = [_torrentsTable frame];
@@ -35,7 +35,7 @@
 			ipadFrame.size.height -= 44;
 			[_torrentsTable setFrame:ipadFrame];
 			[[self view] setFrame:ipadFrame];
-
+            
 			//create custom navigationbar
 			UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, ipadFrame.size.width, 44)];
 			[navBar setTranslucent:NO];
@@ -44,20 +44,20 @@
 			[navBar pushNavigationItem:title animated:NO];
 			[[self view] addSubview:navBar];
 		}
-
+        
 		//setup tableview delegates
 		[_torrentsTable setDelegate:self];
 		[_torrentsTable setDataSource:self];
 		[[self view] addSubview:_torrentsTable];
-
+        
 		//create torrents table
 		_allTorrents = [[NSMutableArray alloc] init];
-
+        
 		//listen for torrent finished notification from controller
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentFinished) name:@"TorrentFinishedDownloading" object:nil];
 		
 	}
-
+    
 	return self;
 }
 
@@ -67,10 +67,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-
+    
 	//remove all torrents
 	[_allTorrents removeAllObjects];
-
+    
 	//refresh our list
 	NSString *completedPath = [[[Delegate torrentController] documentsDirectory] stringByAppendingString:@"/Inactive.plist"];
 	NSArray *inactive = [NSArray arrayWithContentsOfFile:completedPath];
@@ -78,29 +78,29 @@
 		NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:object, @"torrent", @"complete", @"status", nil];
 		[_allTorrents addObject:dict];
 	}
-
+    
 	for (Torrent *t in[[Delegate torrentController] fTorrents]) {
 		NSMutableDictionary *torrentDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:t, @"torrent", @"active", @"status", nil];
 		[_allTorrents addObject:torrentDict];
 	}
-
+    
 	//reload torrents when view is opened
 	[_torrentsTable reloadData];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
-
+    
 	[self save];
 }
 
 - (void)save {
 	//location to completed plist
 	NSString *completedPath = [[[Delegate torrentController] documentsDirectory] stringByAppendingString:@"/Inactive.plist"];
-
+    
 	//populate array from completed plist
 	NSMutableArray *toFile = [[NSMutableArray alloc] initWithArray:[NSArray arrayWithContentsOfFile:completedPath]];
-
+    
 	//add all active to array
 	if ([_allTorrents count] > 0 && _allTorrents) {
 		int objectCnt = [_allTorrents count];
@@ -118,10 +118,10 @@
 			}
 		}
 	}
-
+    
 	//only write if there are objects
 	if ([toFile count] == 0) return;
-
+    
 	//write it
 	[toFile writeToFile:completedPath atomically:NO];
 }
@@ -132,7 +132,10 @@
 	    NSIndexPath *index = [_torrentsTable indexPathForCell:[cell userInfo]];
 	    [[Delegate torrentController] updateGlobalSpeed];
 	    Torrent *torrent = [[_allTorrents objectAtIndex:[index row]] objectForKey:@"torrent"];
-	    [torrent update];
+        
+        if (![torrent isKindOfClass:[Torrent class]]) return;
+	    
+        [torrent update];
 	    [self performUpdateOnCell:[cell userInfo] withTorrent:torrent];
 	});
 }
@@ -169,10 +172,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	//setup cell
 	EACustomTorrentCell *cell = (EACustomTorrentCell *)[tableView dequeueReusableCellWithIdentifier:@"EACustomTorrentCell"];
-
+    
 	if (!cell)
 		cell = [[EACustomTorrentCell alloc] init];
-
+    
 	//completed and active are different cells
 	if ([[[_allTorrents objectAtIndex:[indexPath row]] objectForKey:@"status"] isEqualToString:@"complete"]) {
 		[[cell titleLabel] setText:[[[_allTorrents objectAtIndex:[indexPath row]] objectForKey:@"torrent"] objectForKey:@"name"]];
@@ -182,21 +185,21 @@
 	else {
 		//current torrent
 		Torrent *torrent = [[_allTorrents objectAtIndex:[indexPath row]] objectForKey:@"torrent"];
-
+        
 		//setup info
 		[[cell titleLabel] setText:[[torrent name] stringByReplacingOccurrencesOfString:@"+" withString:@" "]];
 		[[cell statusLabel] setText:[torrent statusString]];
-
+        
 		//setup progress string
 		[[cell progressLabel] setText:[torrent progressString]];
-
+        
 		//progress
 		[[cell progressBar] setProgress:[torrent progressDone]];
-
+        
 		NSTimer *cellTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(update:) userInfo:cell repeats:YES];
 		[[_allTorrents objectAtIndex:[indexPath row]] setObject:cellTimer forKey:@"timer"];
 	}
-
+    
 	return cell;
 }
 
@@ -213,11 +216,11 @@
 	else {
 		actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Close" destructiveButtonTitle:@"Delete" otherButtonTitles:@"Pause", @"Resume", @"Open in iFile", nil];
 	}
-
+    
 	//present it
 	[actionSheet setTag:[indexPath row]];
 	[actionSheet showInView:[self view]];
-
+    
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -230,7 +233,7 @@
 			[delete setTag:[actionSheet tag]];
 			[delete show];
 		}
-
+        
 		if (buttonIndex == 1) {
 			//open in ifile
 			NSString *path = [NSString stringWithFormat:@"ifile://%@", [[[[_allTorrents objectAtIndex:[actionSheet tag]] objectForKey:@"torrent"] objectForKey:@"location"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -241,20 +244,20 @@
 	else {
 		///create torrent
 		Torrent *torrent = [[_allTorrents objectAtIndex:[actionSheet tag]] objectForKey:@"torrent"];
-
+        
 		if (buttonIndex == 0) {
 			//delete torrent
 			UIAlertView *delete = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@", [torrent name]] message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete Torrent", @"Delete Torrent + Data", nil];
 			[delete setTag:[actionSheet tag]];
 			[delete show];
 		}
-
+        
 		if (buttonIndex == 1) //pause
 			[torrent stopTransfer];
-
+        
 		if (buttonIndex == 2) //play
 			[torrent startTransfer];
-
+        
 		if (buttonIndex == 3) {
 			//open in ifile
 			NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"ifile://%@", [[torrent dataLocation] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
@@ -267,48 +270,48 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (buttonIndex == 0)
 		return;
-
+    
 	NSString *location;
 	NSString *tlocation;
 	Torrent *torrent;
-
+    
 	//delete torrent data, file, or both
-
+    
 	if ([[[_allTorrents objectAtIndex:[alertView tag]] objectForKey:@"status"] isEqualToString:@"complete"]) {
 		location = [[[_allTorrents objectAtIndex:[alertView tag]] objectForKey:@"torrent"] objectForKey:@"location"];
 	}
-
+    
 	else {
 		torrent = [[_allTorrents objectAtIndex:[alertView tag]] objectForKey:@"torrent"];
 		location = [torrent dataLocation];
 		tlocation = [torrent torrentLocation];
 	}
-
+    
 	//just delete .torrent
 	if (buttonIndex == 1) {
 		[torrent stopTransfer];
 		[[NSFileManager defaultManager] removeItemAtPath:tlocation error:nil];
 	}
-
+    
 	//delete all
 	if (buttonIndex == 2) {
 		[torrent stopTransfer];
 		[[NSFileManager defaultManager] removeItemAtPath:location error:nil];
 		[[NSFileManager defaultManager] removeItemAtPath:tlocation error:nil];
-
+        
 		//remove from saved plist
 		NSMutableArray *files = [[NSMutableArray alloc] initWithContentsOfFile:[[[Delegate torrentController] documentsDirectory] stringByAppendingString:@"/Inactive.plist"]];
-
+        
 		if ([files containsObject:[_allTorrents objectAtIndex:[alertView tag]]]) {
 			[files removeObject:[_allTorrents objectAtIndex:[alertView tag]]];
 		}
-
+        
 		[[NSFileManager defaultManager] removeItemAtPath:[[[Delegate torrentController] documentsDirectory] stringByAppendingString:@"/Inactive.plist"] error:nil];
 		[files writeToFile:[[[Delegate torrentController] documentsDirectory] stringByAppendingString:@"/Inactive.plist"] atomically:NO];
 	}
-
+    
 	[_allTorrents removeObjectAtIndex:[alertView tag]];
-
+    
 	[_torrentsTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:[alertView tag] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
