@@ -1,4 +1,0 @@
-language: objective-c
-
-script:
-xctool -project BayBrowser\ 2.xcodeproj/ -scheme BayBrowser\ 2
