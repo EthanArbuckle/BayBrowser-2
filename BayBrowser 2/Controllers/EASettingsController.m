@@ -100,7 +100,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 6;
+	return 7;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -129,6 +129,8 @@
 	if (section == 4)
 		return 3;
 	if (section == 5)
+		return 1;
+	if (section == 6)
 		return 1;
 	return 0;
 }
@@ -235,6 +237,13 @@
 
 	if ([indexPath section] == 5) {
 		[[cell textLabel] setText:@"BayBrowser 2.0.7 Changelog"];
+	}
+	
+	if ([indexPath section] == 6) {
+		[[cell textLabel] setText:@"Fork me on GitHub!"];
+		[[cell textLabel] setTextColor:[UIColor whiteColor]];
+		[[cell textLabel] setTextAlignment:NSTextAlignmentCenter];
+		[cell setBackgroundColor:[UIColor colorWithRed:164.0f/255.0f green:14.0f/255.0f blue:0 alpha:1]];
 	}
 
 	return cell;
@@ -348,6 +357,11 @@
 		UIAlertView *changelog = [[UIAlertView alloc] initWithTitle:@"BayBrowser 2.0.7 Changelog" message:@"No More Pro!\n\nLimit Downloads to Wifi or Cellular Only.\n\nAdded a Network Speed Overlay." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
 		[changelog show];
 	}
+	
+	if ([indexPath section] == 6) {
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/EthanArbuckle/BayBrowser-2"]];
+	}
+	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
