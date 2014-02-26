@@ -22,11 +22,13 @@
 @property (nonatomic, strong) EADynamicBlur *blurView;
 @property (nonatomic, strong) NSMutableArray *viewControllers;
 @property (nonatomic) BOOL isOpen;
+@property (nonatomic, strong) UIView *activeBadgeView;
 
 - (void)tappedShowHide;
 - (void)showTable;
 - (void)hideTable;
 - (void)addPornToTable;
 - (void)removePornFromTable;
+- (void)updateBadgeCount;
 
 @end

@@ -55,6 +55,7 @@
 
 		//listen for torrent finished notification from controller
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentFinished) name:@"TorrentFinishedDownloading" object:nil];
+		
 	}
 
 	return self;

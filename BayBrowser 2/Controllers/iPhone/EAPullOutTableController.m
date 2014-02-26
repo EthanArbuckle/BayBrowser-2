@@ -101,6 +101,7 @@
 		UITapGestureRecognizer *sideViewer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedShowHide)];
 		[sideViewer setNumberOfTapsRequired:2];
 		[[_navigationController navigationBar] addGestureRecognizer:sideViewer];
+		
 	}
 	return self;
 }
@@ -141,6 +142,26 @@
 		[[cell textLabel] setText:[titles objectAtIndex:[indexPath row]]];
 		[[cell textLabel] setTextColor:[UIColor whiteColor]];
 		[[cell textLabel] setBackgroundColor:[UIColor clearColor]];
+		
+		if ([indexPath row] == 0) {
+			
+			//create badge view
+			_activeBadgeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 28)];
+			[_activeBadgeView setBackgroundColor:[UIColor redColor]];
+			[[_activeBadgeView layer] setMasksToBounds:NO];
+			[[_activeBadgeView layer] setCornerRadius:10];
+			[[_activeBadgeView layer] setBorderWidth:0];
+			[_activeBadgeView setAlpha:1];
+			[cell setAccessoryView:_activeBadgeView];
+			
+			//create label for count
+			UILabel *countLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 4, 30, 20)];
+			[countLabel setTextAlignment:NSTextAlignmentCenter];
+			[countLabel setTextColor:[UIColor whiteColor]];
+			[countLabel setText:@"1"];
+			[_activeBadgeView addSubview:countLabel];
+			
+		}
 	}
 
 	if ([indexPath section] == 2) {
@@ -277,6 +298,15 @@
 	
 	//refresh
 	[_sideTable reloadData];
+}
+
+- (void)updateBadgeCount {
+	
+	//get label form active badge
+	UILabel *active = [_activeBadgeView subviews][0];
+	
+	//update its text
+	
 }
 
 @end
