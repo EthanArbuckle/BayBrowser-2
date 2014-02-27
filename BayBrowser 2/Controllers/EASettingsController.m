@@ -236,7 +236,7 @@
 	}
 
 	if ([indexPath section] == 5) {
-		[[cell textLabel] setText:@"BayBrowser 2.0.8 Changelog"];
+		[[cell textLabel] setText:@"BayBrowser 2.0.7.1 Changelog"];
 	}
 	
 	if ([indexPath section] == 6) {
@@ -354,7 +354,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([indexPath section] == 5) {
-		UIAlertView *changelog = [[UIAlertView alloc] initWithTitle:@"BayBrowser 2.0.8 Changelog" message:@"" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+		UIAlertView *changelog = [[UIAlertView alloc] initWithTitle:@"BayBrowser 2.0.7.1 Changelog" message:@"Updated Base URL" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
 		[changelog show];
 	}
 	
