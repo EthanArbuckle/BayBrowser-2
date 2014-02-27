@@ -287,15 +287,18 @@
 		tlocation = [torrent torrentLocation];
 	}
     
+    if (![torrent isKindOfClass:[Torrent class]]) return;
+    
+    [torrent stopTransfer];
+
 	//just delete .torrent
 	if (buttonIndex == 1) {
-		[torrent stopTransfer];
 		[[NSFileManager defaultManager] removeItemAtPath:tlocation error:nil];
+        return;
 	}
     
 	//delete all
 	if (buttonIndex == 2) {
-		[torrent stopTransfer];
 		[[NSFileManager defaultManager] removeItemAtPath:location error:nil];
 		[[NSFileManager defaultManager] removeItemAtPath:tlocation error:nil];
         

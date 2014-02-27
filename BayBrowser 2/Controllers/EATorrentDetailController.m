@@ -92,7 +92,18 @@
 #pragma mark - ActionSheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (buttonIndex == 0) {
+        
+        //send magnet to controller
 		[[Delegate torrentController] addTorrentFromManget:[_torrentDictionary objectForKey:@"magnet"]];
+        
+        //show message
+        
+        if (_isPad)
+            [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"'%@' has been started!", [_torrentDictionary objectForKey:@"title"]] type:TSMessageNotificationTypeSuccess];
+        else
+            [TSMessage showNotificationInViewController:self title:[NSString stringWithFormat:@"'%@' has been started!", [_torrentDictionary objectForKey:@"title"]] subtitle:@"" image:nil type:TSMessageNotificationTypeSuccess duration:TSMessageNotificationDurationAutomatic callback:nil buttonTitle:@"View" buttonCallback:^{
+                    [[Delegate pullOutMenu] showTable];
+            } atPosition:TSMessageNotificationPositionTop canBeDismisedByUser:YES];
 	}
 }
 

@@ -12,6 +12,7 @@
 #import "EAImagesView.h"
 #import "EAiPhoneDelegate.h"
 #import "EAiPadDelegate.h"
+#import "TSMessage.h"
 
 @interface EATorrentDetailController : UIViewController <UIActionSheetDelegate>
 
