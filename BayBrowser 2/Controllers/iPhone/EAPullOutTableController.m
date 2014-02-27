@@ -250,7 +250,7 @@
 		return @"Browse";
 	if (section == 1)
 		return @"Downloads";
-	return @"BayBrowser 2.0.7";
+	return @"BayBrowser 2.0.8";
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {

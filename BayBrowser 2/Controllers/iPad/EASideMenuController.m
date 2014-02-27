@@ -166,7 +166,7 @@
 	if (section == 1)
 		return @"Downloads";
 	else
-		return @"BayBrowser 2.0.7";
+		return @"BayBrowser 2.0.8";
 }
 
 @end

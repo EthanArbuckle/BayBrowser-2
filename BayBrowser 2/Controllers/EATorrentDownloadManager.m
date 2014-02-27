@@ -18,6 +18,9 @@
 
 - (id)initAsiPad:(BOOL)isPad {
 	if (self = [super init]) {
+		
+		_isPad = isPad;
+		
 		//create table
 		_torrentsTable = [[UITableView alloc] initWithFrame:[[self view] bounds]];
 		CGRect frame = [_torrentsTable frame];
@@ -212,16 +215,27 @@
 	UIActionSheet *actionSheet;
 	if ([[[_allTorrents objectAtIndex:[indexPath row]] objectForKey:@"status"] isEqualToString:@"complete"]) {
 		actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Close" destructiveButtonTitle:@"Delete" otherButtonTitles:@"Open in iFile", nil];
+		
+		//present it
+		[actionSheet setTag:[indexPath row]];
+		[actionSheet showInView:[self view]];
 	}
-	else {
-		actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Close" destructiveButtonTitle:@"Delete" otherButtonTitles:@"Pause", @"Resume", @"Open in iFile", nil];
+	else { //push to active torrent detail controller
+		
+		//get torrent to send to detail
+		Torrent *torrentToPass = [[_allTorrents objectAtIndex:[indexPath row]] objectForKey:@"torrent"];
+		
+		//push to controller, depending on ipad or iphone
+		if (_isPad) {
+			
+		}
+		else {
+			
+		}
+		
+		
 	}
     
-	//present it
-	[actionSheet setTag:[indexPath row]];
-	[actionSheet showInView:[self view]];
-    
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UIActionSheet delegate

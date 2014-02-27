@@ -236,7 +236,7 @@
 	}
 
 	if ([indexPath section] == 5) {
-		[[cell textLabel] setText:@"BayBrowser 2.0.7 Changelog"];
+		[[cell textLabel] setText:@"BayBrowser 2.0.8 Changelog"];
 	}
 	
 	if ([indexPath section] == 6) {
@@ -354,7 +354,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([indexPath section] == 5) {
-		UIAlertView *changelog = [[UIAlertView alloc] initWithTitle:@"BayBrowser 2.0.7 Changelog" message:@"No More Pro! BayBrowser is Now Free and Open Source.\n\nLimit Downloads to Wifi or Cellular Only.\n\nAdded a Network Speed Overlay.\n\nFixed FileBrowser Toolbar Getting Put on Top of Side Menu.\n\nFixed Porn Category Not Being Added in iPhone Version.\n\nAdded Badge With Downloading Torrents Count to Active Tab." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
+		UIAlertView *changelog = [[UIAlertView alloc] initWithTitle:@"BayBrowser 2.0.8 Changelog" message:@"" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
 		[changelog show];
 	}
 	

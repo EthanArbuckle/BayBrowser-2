@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) UITableView *torrentsTable;
 @property (nonatomic, strong) NSMutableArray *allTorrents;
+@property (nonatomic) BOOL isPad;
 
 - (id)initAsiPad:(BOOL)isPad;
 - (void)save;
