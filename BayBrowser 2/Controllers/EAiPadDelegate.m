@@ -28,11 +28,11 @@
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showsPorn"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"canSeed"];
 		[[NSUserDefaults standardUserDefaults] setValue:@"http://thepiratebay.se" forKey:@"baseUrl"];
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun 2.0.7.1"];
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasRun2.8"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showsProgress"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useWifi"];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"useNetwork"];
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showOverlay"];
+		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showOverlay"];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 
