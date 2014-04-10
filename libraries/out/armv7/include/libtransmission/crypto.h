@@ -14,7 +14,7 @@
 #define TR_ENCRYPTION_H
 
 #ifndef __TRANSMISSION__
-#error only libtransmission should #include this header.
+#warning only libtransmission should #include this header.
 #endif
 
 #include <inttypes.h>

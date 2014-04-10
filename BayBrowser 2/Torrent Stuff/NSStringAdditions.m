@@ -23,9 +23,9 @@
  *****************************************************************************/
 
 #import "NSStringAdditions.h"
-
-#import <libtransmission/transmission.h>
-#import <libtransmission/utils.h>
+/*
+#import "tr"
+#import "utils.h" */
 
 @interface NSString (Private)
 

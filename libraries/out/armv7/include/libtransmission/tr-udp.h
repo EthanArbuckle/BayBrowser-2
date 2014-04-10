@@ -25,7 +25,7 @@ THE SOFTWARE.
 #define TR_UDP_H
 
 #ifndef __TRANSMISSION__
- #error only libtransmission should #include this header.
+ #warning only libtransmission should #include this header.
 #endif
 
 void tr_udpInit (tr_session *);

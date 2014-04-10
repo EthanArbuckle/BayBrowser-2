@@ -22,7 +22,7 @@ THE SOFTWARE.
 */
 
 #ifndef __TRANSMISSION__
- #error only libtransmission should #include this header.
+ #warning only libtransmission should #include this header.
 #endif
 
 #ifndef _TR_UTP_H_

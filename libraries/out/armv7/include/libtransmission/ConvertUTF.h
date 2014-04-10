@@ -2,7 +2,7 @@
 #define CONVERT_UNICODE_H
 
 #ifndef __TRANSMISSION__
-#error only libtransmission should #include this header.
+#warning only libtransmission should #include this header.
 #endif
 
 /*

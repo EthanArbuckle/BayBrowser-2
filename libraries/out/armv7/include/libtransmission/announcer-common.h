@@ -11,7 +11,7 @@
  */
 
 #ifndef __LIBTRANSMISSION_ANNOUNCER_MODULE___
- #error only the libtransmission announcer module should #include this header.
+ #warning only the libtransmission announcer module should #include this header.
 #endif
 
 #ifndef _TR_ANNOUNCER_COMMON_H_

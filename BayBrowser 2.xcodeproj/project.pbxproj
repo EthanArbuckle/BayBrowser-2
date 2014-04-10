@@ -1193,9 +1193,9 @@
 		5FFC33B81831E10400990D9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
-				CODE_SIGN_IDENTITY = Computer;
+				CODE_SIGN_IDENTITY = "Ethan Arbuckle";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/ethanarbuckle/Desktop/baybrowser-2/BayBrowser\\ 2/Resources",
@@ -1213,7 +1213,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
-					"$(SRCROOT)/libraries/out/$(CURRENT_ARCH)/include",
+					"$(SRCROOT)/libraries/out/$(CURRENT_ARCH)/include/**",
 				);
 				INFOPLIST_FILE = "BayBrowser 2/BayBrowser 2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1248,9 +1248,9 @@
 		5FFC33B91831E10400990D9C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = NO;
-				CODE_SIGN_IDENTITY = Computer;
+				CODE_SIGN_IDENTITY = "Ethan Arbuckle";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/ethanarbuckle/Desktop/baybrowser-2/BayBrowser\\ 2/Resources",
@@ -1268,7 +1268,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
-					"$(SRCROOT)/libraries/out/$(CURRENT_ARCH)/include",
+					"$(SRCROOT)/libraries/out/$(CURRENT_ARCH)/include/**",
 				);
 				INFOPLIST_FILE = "BayBrowser 2/BayBrowser 2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
