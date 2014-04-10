@@ -42,6 +42,7 @@
 #endif
 
 @interface AFHTTPSessionManager ()
+#pragma GCC diagnostic ignored "-Wobjc-property-synthesis"
 @property (readwrite, nonatomic, strong) NSURL *baseURL;
 @property (readwrite, nonatomic, strong) AFNetworkReachabilityManager *reachabilityManager;
 @end

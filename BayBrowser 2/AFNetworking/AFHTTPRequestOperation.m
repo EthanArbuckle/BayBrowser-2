@@ -45,6 +45,7 @@ static dispatch_group_t http_request_operation_completion_group() {
 #pragma mark -
 
 @interface AFHTTPRequestOperation ()
+#pragma GCC diagnostic ignored "-Wobjc-property-synthesis"
 @property (readwrite, nonatomic, strong) NSURLRequest *request;
 @property (readwrite, nonatomic, strong) NSHTTPURLResponse *response;
 @property (readwrite, nonatomic, strong) id responseObject;

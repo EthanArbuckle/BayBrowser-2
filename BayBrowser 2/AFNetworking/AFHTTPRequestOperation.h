@@ -36,6 +36,7 @@
 /**
  The last HTTP response received by the operation's connection.
  */
+#pragma GCC diagnostic ignored "-Wobjc-property-synthesis"
 @property (readonly, nonatomic, strong) NSHTTPURLResponse *response;
 
 /**
