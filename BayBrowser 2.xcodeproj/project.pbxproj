@@ -130,22 +130,7 @@
 		5FFC33901831E10200990D9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5FFC338E1831E10200990D9C /* InfoPlist.strings */; };
 		5FFC33921831E10200990D9C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC33911831E10200990D9C /* main.m */; };
 		5FFC33A11831E10400990D9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FFC33A01831E10400990D9C /* Images.xcassets */; };
-		5FFC33A81831E10400990D9C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC33A71831E10400990D9C /* XCTest.framework */; };
-		5FFC33A91831E10400990D9C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC33851831E10200990D9C /* Foundation.framework */; };
-		5FFC33AA1831E10400990D9C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FFC33891831E10200990D9C /* UIKit.framework */; };
-		5FFC33B21831E10400990D9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5FFC33B01831E10400990D9C /* InfoPlist.strings */; };
-		5FFC33B41831E10400990D9C /* BayBrowser_2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC33B31831E10400990D9C /* BayBrowser_2Tests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		5FFC33AB1831E10400990D9C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5FFC337A1831E10100990D9C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5FFC33811831E10200990D9C;
-			remoteInfo = "BayBrowser 2";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5F12FFB7184C211900A99FA1 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
@@ -381,11 +366,7 @@
 		5FFC33911831E10200990D9C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5FFC33931831E10300990D9C /* BayBrowser 2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BayBrowser 2-Prefix.pch"; sourceTree = "<group>"; };
 		5FFC33A01831E10400990D9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5FFC33A61831E10400990D9C /* BayBrowser 2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BayBrowser 2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FFC33A71831E10400990D9C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		5FFC33AF1831E10400990D9C /* BayBrowser 2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BayBrowser 2Tests-Info.plist"; sourceTree = "<group>"; };
-		5FFC33B11831E10400990D9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5FFC33B31831E10400990D9C /* BayBrowser_2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BayBrowser_2Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,16 +381,6 @@
 				5FFC33881831E10200990D9C /* CoreGraphics.framework in Frameworks */,
 				5FFC338A1831E10200990D9C /* UIKit.framework in Frameworks */,
 				5FFC33861831E10200990D9C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5FFC33A31831E10400990D9C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5FFC33A81831E10400990D9C /* XCTest.framework in Frameworks */,
-				5FFC33AA1831E10400990D9C /* UIKit.framework in Frameworks */,
-				5FFC33A91831E10400990D9C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,7 +735,6 @@
 			isa = PBXGroup;
 			children = (
 				5FFC338B1831E10200990D9C /* BayBrowser 2 */,
-				5FFC33AD1831E10400990D9C /* BayBrowser 2Tests */,
 				5FFC33841831E10200990D9C /* Frameworks */,
 				5FFC33831831E10200990D9C /* Products */,
 			);
@@ -774,7 +744,6 @@
 			isa = PBXGroup;
 			children = (
 				5FFC33821831E10200990D9C /* BayBrowser 2.app */,
-				5FFC33A61831E10400990D9C /* BayBrowser 2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -844,24 +813,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5FFC33AD1831E10400990D9C /* BayBrowser 2Tests */ = {
-			isa = PBXGroup;
-			children = (
-				5FFC33B31831E10400990D9C /* BayBrowser_2Tests.m */,
-				5FFC33AE1831E10400990D9C /* Supporting Files */,
-			);
-			path = "BayBrowser 2Tests";
-			sourceTree = "<group>";
-		};
-		5FFC33AE1831E10400990D9C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5FFC33AF1831E10400990D9C /* BayBrowser 2Tests-Info.plist */,
-				5FFC33B01831E10400990D9C /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -882,24 +833,6 @@
 			productReference = 5FFC33821831E10200990D9C /* BayBrowser 2.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5FFC33A51831E10400990D9C /* BayBrowser 2Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5FFC33BA1831E10400990D9C /* Build configuration list for PBXNativeTarget "BayBrowser 2Tests" */;
-			buildPhases = (
-				5FFC33A21831E10400990D9C /* Sources */,
-				5FFC33A31831E10400990D9C /* Frameworks */,
-				5FFC33A41831E10400990D9C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5FFC33AC1831E10400990D9C /* PBXTargetDependency */,
-			);
-			name = "BayBrowser 2Tests";
-			productName = "BayBrowser 2Tests";
-			productReference = 5FFC33A61831E10400990D9C /* BayBrowser 2Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -909,11 +842,6 @@
 				CLASSPREFIX = EA;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Ethan Arbuckle";
-				TargetAttributes = {
-					5FFC33A51831E10400990D9C = {
-						TestTargetID = 5FFC33811831E10200990D9C;
-					};
-				};
 			};
 			buildConfigurationList = 5FFC337D1831E10100990D9C /* Build configuration list for PBXProject "BayBrowser 2" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -929,7 +857,6 @@
 			projectRoot = "";
 			targets = (
 				5FFC33811831E10200990D9C /* BayBrowser 2 */,
-				5FFC33A51831E10400990D9C /* BayBrowser 2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -974,14 +901,6 @@
 				5F253271184B3717007E7E80 /* particleTexture.png in Resources */,
 				5F8F0C3618F6329D00EDC247 /* Default-568h@2x.png in Resources */,
 				5F7B0DE41857B4360054A8F7 /* NotificationBackgroundSuccess.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5FFC33A41831E10400990D9C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5FFC33B21831E10400990D9C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,37 +995,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5FFC33A21831E10400990D9C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5FFC33B41831E10400990D9C /* BayBrowser_2Tests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5FFC33AC1831E10400990D9C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5FFC33811831E10200990D9C /* BayBrowser 2 */;
-			targetProxy = 5FFC33AB1831E10400990D9C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5FFC338E1831E10200990D9C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5FFC338F1831E10200990D9C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		5FFC33B01831E10400990D9C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5FFC33B11831E10400990D9C /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1280,48 +1175,6 @@
 			};
 			name = Release;
 		};
-		5FFC33BB1831E10400990D9C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BayBrowser 2.app/BayBrowser 2";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BayBrowser 2/BayBrowser 2-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "BayBrowser 2Tests/BayBrowser 2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		5FFC33BC1831E10400990D9C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BayBrowser 2.app/BayBrowser 2";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BayBrowser 2/BayBrowser 2-Prefix.pch";
-				INFOPLIST_FILE = "BayBrowser 2Tests/BayBrowser 2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1339,15 +1192,6 @@
 			buildConfigurations = (
 				5FFC33B81831E10400990D9C /* Debug */,
 				5FFC33B91831E10400990D9C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5FFC33BA1831E10400990D9C /* Build configuration list for PBXNativeTarget "BayBrowser 2Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5FFC33BB1831E10400990D9C /* Debug */,
-				5FFC33BC1831E10400990D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
