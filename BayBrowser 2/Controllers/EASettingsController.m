@@ -100,7 +100,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 7;
+	return 6;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -236,10 +236,6 @@
 	}
 
 	if ([indexPath section] == 5) {
-		[[cell textLabel] setText:@"BayBrowser 2.0.8 Changelog"];
-	}
-	
-	if ([indexPath section] == 6) {
 		[[cell textLabel] setText:@"Fork me on GitHub!"];
 		[[cell textLabel] setTextColor:[UIColor whiteColor]];
 		[[cell textLabel] setTextAlignment:NSTextAlignmentCenter];
@@ -353,12 +349,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if ([indexPath section] == 5) {
-		UIAlertView *changelog = [[UIAlertView alloc] initWithTitle:@"BayBrowser 2.0.8 Changelog" message:@"Fixed Settings Not Saving.\n\n" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil, nil];
-		[changelog show];
-	}
 	
-	if ([indexPath section] == 6) {
+	if ([indexPath section] == 5) {
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/EthanArbuckle/BayBrowser-2"]];
 	}
 	
